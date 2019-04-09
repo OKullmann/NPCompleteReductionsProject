@@ -1,7 +1,7 @@
 \documentclass[a4paper]{report}
 \usepackage{mathtools}
 \usepackage{graphicx}
-
+\usepackage{verbatim} 
 \scrollmode
 %
 \usepackage{amsmath}
@@ -103,13 +103,43 @@ XXX proof of correctness YOURSELF
 
 a couple of sentences WHAT is to be proven
 
+Proof of correctness : proof that the alogorithm when provided an input produces the expected (and correct) output.\\
+
+Question : Prove, assuming SAT is NP-complete, that a reduction from CNF SAT to 3-CNF, is evidence that 3-CNF is also NP-complete.\\
+
 a couple of sentences for the arguments
+\\
+F is CNF SAT formula.\\ 
+$F =  C = \bigwedge_{j=1}^{n} c_j = c_1 \wedge c_2 \wedge \dots \wedge c_n$
+%$c = x_1 \vee x_2 \vee \dots \vee x_s$
+
+%$n =$ total number of clause in clause set
+C is a clause set.
+$c \in C$.\\
+$c_i = X_i = \bigvee_{j=1}^{s} x_{ij} =  (x_{i1} \vee x_{i2} \vee \dots \vee x_{is})$\\
+$s > 3 $\\
+$x_{ij}$ is an atom or negation of an atom.
+$x \in X$.\\
+\\
+\\
+F$'$ is a CNF 3-SAT formular.\\
+$F' =  C' = \bigwedge_{j=1}^{n} c'_j = c_1 \wedge c_2 \wedge \dots \wedge c_n$\\
+$C'$ is a clause set.
+$c' \in C' \quad c'$ is a clause with only three atoms.\\
+$c'_i = X_i \cup X'_i = \bigvee_{j=1}^{s'} x_{ij} \bigvee_{k=1}^{s'-3}v_{ik}= \\= (x_{i1} \wedge x_{i2} \wedge \dots \wedge x_{is'}) \vee (v_{ik} \wedge \neg v_{ik})
+\\ =  (x_{i1} \vee x_{i2} \vee v_{ik}) \wedge  (\neg v_{ik} \vee x_{i3} \vee  v_{i(k+1)}) \wedge \dots \wedge   (\neg v_{i(s'-3)} \vee x_{i(s'-1)} \vee x_{is'})$\\
+$s' \subseteq s > 3  $\\
+$x_{ij}$ is an atom or negation of an atom. $v_{ik}$ is a new atom .\\
+$x \in X$.$v \in X'$.\\
+\\
+$F'$ is only satsifiable iff $F$ is satisfiable, also $c'_i$ is equivalent to $c_i$ as the compound proposition $(v_{ik} \wedge \neg v_{ik})$ is a contradiction and according to identity laws effectivly leaves the original clause's unchnaged, just as in addition, adding a $(1 + -1)$ to an eqaution results in the same equation. 
+\\
 
   \item This all in a different language.
   \end{enumerate}
 
 \end{enumerate}
-
+\begin{comment}
 $\phi$ = $( x_1 \wedge x_2 ) \vee (\neg x_1 \vee x_3) \wedge \neg x_2$ 
 \\
 \\
@@ -126,9 +156,7 @@ $(y_4$  $\iff$ $( \neg x_1 \vee  x_3))$   \\
 \\
 \\%$p \iff q \equiv (p \wedge q) \vee ( \neg p \wedge \neg q)$
 \\ 
-
 truth table for biconditional statment\quad$ p \iff q $\\
-
 \begin{tabular}{|c|c|c|}
 \hline
 p & q&  \\
@@ -141,7 +169,6 @@ F&F&T\\
 \end{tabular}\\
 \\
 \\
-
 \begin{tabular}{ |c|c|c|c|c| }
 \hline
 p&
@@ -159,7 +186,6 @@ $y_1$&$y_2$&$\neg y_2$&Clause 1\\
 0&0&1&	TRUE\\
 \hline
 \end{tabular}\\
-
 $\neg C_1 = (y_1 \wedge y_2 \wedge x_2) \vee (y_1 \wedge \neg y_2 \wedge x_2) \vee (y_1 \wedge \neg y_2 \wedge \neg x_2) \vee (\neg y_1 \wedge y_2 \wedge \neg x_2)$\\
 \\
 \begin{tabular}{|c|}
@@ -175,7 +201,6 @@ $CNF\quad C_1 = (\neg y_1 \vee \neg y_2 \vee \neg x_2) \wedge ( \neg y_1 \vee y_
 \\
 \begin{tabular}{ |c|c|c|c|c| }
 \hline
-	
 $y_2$&$y_3$&$y_4$&Clause 2\\
 \hline		
 1&1&0&	TRUE\\
@@ -188,7 +213,7 @@ $y_2$&$y_3$&$y_4$&Clause 2\\
 0&0&1&	FALSE*\\
 \hline
 \end{tabular}\\
-
+\end{comment}
 
 
 \section{3SAT to 1-in-3-SAT}
