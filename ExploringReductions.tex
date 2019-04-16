@@ -14,21 +14,37 @@
 
 \usepackage[driverfallback=hypertex]{hyperref}
 
-%\graphicspath{ {"C:/Users/l_joh/Desktop/tree.jpg"} }
-%https://pdfs.semanticscholar.org/ed71/ebe0eee4f88f095247c8b62ba1d3b217a68d.pdf
+
 \setcounter{secnumdepth}{2}
 \setcounter{tocdepth}{1}
 
+
+\usepackage{theorem} % am 18.5.2001 von ``Basis'' hierhin verschoben
+
+\renewcommand{\thefootnote}{\arabic{footnote})}%
+
+\newtheorem{defi}{Definition}[section]
+\newtheorem{lem}[defi]{Lemma}
+\newtheorem{thm}[defi]{Theorem}
+\newtheorem{corol}[defi]{Corollary}
+\newtheorem{propo}[defi]{Proposition}
+\newtheorem{exerc}[defi]{Exercise}
+\newtheorem{conj}[defi]{Conjecture}
+\newtheorem{examp}[defi]{Example}
+\newtheorem{quest}[defi]{Question}
+\newtheorem{spec}[defi]{Speculation}
+\newtheorem{oprbl}[defi]{Open Problem}
+
+
 \begin{document}
 
-\title{Reductions for NP-complete problems}
+\title{Reductions for NP-complete problems:\\ From SAT to N-Queens-Completion}
 
 \author{Luke Bevan John\\
   Computer Science Department\\
   Swansea University\\
   Swansea, SA1 8EN, UK
 }
-\date{}
 
 \maketitle
 
@@ -63,168 +79,122 @@
   \end{enumerate}
 \item Research: improving the reduction SAT to 3SAT:
   \begin{enumerate}
-  \item Examples (complete) and Written out.
+  \item Examples (complete) and written out.
   \item Initial concepts.
   \item Literature overview.
-  \item literature search about the topic of reductions SAT --> 3-SAT.
-  \item for every relevant piece of literature found, write one paragraph, what's in that peice about relevant to our topic.
+  \item Literature search about the topic of reductions SAT to 3-SAT.
+  \item For every relevant piece of literature found, write one paragraph, what's in that piece about relevant to our topic.
   \end{enumerate}
-\item Oliver Email\\
- just to summarise the discussion we had:
+\item Oliver Email
+
+  Just to summarise the discussion we had:
   \begin{enumerate}
      \item We will focus on the reductions, their implementations and experimental evaluation.
     \item With the implementations, C++ will be learned.
     \item The experimental evaluation can be extended to include the use the machine-learning tools for automatic configuration of the reductions.
-    \item start providing basic definitions. \\ 
-\\ Oliver
+    \item Start providing basic definitions.
   \end{enumerate}
 \end{enumerate}
 
+
+
 \section{Plan}
 \label{sec:Plan}
-\begin{enumerate}
-\item add karp paper to bibtex document.\cite{Karp1972NP}
-\item write paragraph on paper.
 
+\begin{enumerate}
+\item Add Karp paper (\cite{Karp1972NP}) to bibtex-file.
+\item Write paragraph on paper.
 \end{enumerate}
 
 
 
-\chapter {Introduction}
+\chapter{Introduction}
 \label{cha:Introduction}
 
-\section{Background}
-\label{sec:Background}
+\section{SAT}
+\label{sec:BackgroundSAT}
+
+\begin{defi}\label{def:CNF}
+  A \textbf{CNF} (``CNF formula'') is XXX
+\end{defi}
+
+\begin{defi}\label{def:CLS}
+  A \textbf{clause-set} is XXX
+\end{defi}
+
+\begin{examp}\label{exp:CLS}
+  XXX examples for CNF and clause-sets
+\end{examp}
+
+
+\section{Complexity theory}
+\label{sec:basicscomplexitytheory}
+
+\begin{defi}\label{def:complexityclass}
+  A \textbf{complexity class} is XXX
+\end{defi}
+
+\begin{defi}\label{def:inNP}
+  A complexity class $\mathcal{C}$ is \textbf{in NP} if XXX
+\end{defi}
+
+\begin{defi}\label{def:NPcomplete}
+  A complexity class $\mathcal{C}$ is \textbf{NP-complete}, if $\mathcal{C}$ is in NP (see Definition \ref{def:inNP}), and XXX
+\end{defi}
+
+
+\section{Computational problems}
+\label{sec:computationalproblems}
+
+\begin{defi}\label{def:SATproblem}
+  The \textbf{SAT problem} is XXX
+\end{defi}
+
+\begin{defi}\label{def:3SATproblem}
+  The \textbf{3-SAT problem} is XXX
+\end{defi}
+
 
 
 
 \chapter{SAT to 3SAT}
 \label{cha:sat13}
 
+
+\section{Overview}
+\label{sec:sat13Overview}
+
 \begin{enumerate}
-\item \cite{Cook1971NP}
+\item Overview on \cite{Cook1971NP}:
   \begin{enumerate}
-  \item Theorem proves that every language in co-NP can be reduced to TAUT.
+  \item Theorem 1 proves that every language in co-NP can be reduced to TAUT.
   \item The proof of Theorem 1 actually shows that SAT (for CNF) is NP-complete.
   \item Theorem 2 shows that 3-CNF (every clause has length at most 3) is NP-complete. This happens by splitting up a clause $x_1 \vee \dots \vee x_s$ into
     \begin{displaymath}
       v \vee x_1 \vee x_2, \quad \neg v \vee x_3 \vee \dots \vee x_s.
     \end{displaymath}
-XXX proof of correctness YOURSELF
-
-a couple of sentences WHAT is to be proven
-
-Proof of correctness : proof that the alogorithm when provided an input produces the expected (and correct) output.\\
-
-Question : Prove, assuming SAT is NP-complete, that a reduction from CNF SAT to 3-CNF, is evidence that 3-CNF is also NP-complete.\\
-
-a couple of sentences for the arguments
-\\
-F is CNF SAT formula.\\ 
-$F =  C = \bigwedge_{j=1}^{n} c_j = c_1 \wedge c_2 \wedge \dots \wedge c_n$
-%$c = x_1 \vee x_2 \vee \dots \vee x_s$
-
-%$n =$ total number of clause in clause set
-C is a clause set.
-$c \in C$.\\
-$c_i = X_i = \bigvee_{j=1}^{s} x_{ij} =  (x_{i1} \vee x_{i2} \vee \dots \vee x_{is})$\\
-$s > 3 $\\
-$x_{ij}$ is an atom or negation of an atom.
-$x \in X$.\\
-\\
-\\
-F$'$ is a CNF 3-SAT formular.\\
-$F' =  C' = \bigwedge_{j=1}^{n} c'_j = c_1 \wedge c_2 \wedge \dots \wedge c_n$\\
-$C'$ is a clause set.
-$c' \in C' \quad c'$ is a clause with only three atoms.\\
-$c'_i = X_i \cup X'_i = \bigvee_{j=1}^{s'} x_{ij} \bigvee_{k=1}^{s'-3}v_{ik}= \\= (x_{i1} \wedge x_{i2} \wedge \dots \wedge x_{is'}) \vee (v_{ik} \wedge \neg v_{ik})
-\\ =  (x_{i1} \vee x_{i2} \vee v_{ik}) \wedge  (\neg v_{ik} \vee x_{i3} \vee  v_{i(k+1)}) \wedge \dots \wedge   (\neg v_{i(s'-3)} \vee x_{i(s'-1)} \vee x_{is'})$\\
-$s' \subseteq s > 3  $\\
-$x_{ij}$ is an atom or negation of an atom. $v_{ik}$ is a new atom .\\
-$x \in X$.$v \in X'$.\\
-\\
-$F'$ is only satsifiable iff $F$ is satisfiable, also $c'_i$ is equivalent to $c_i$ as the compound proposition $(v_{ik} \wedge \neg v_{ik})$ is a contradiction and according to identity laws effectivly leaves the original clause's unchnaged, just as in addition, adding a $(1 + -1)$ to an eqaution results in the same equation. 
-\\
-
   \item This all in a different language.
+  \item For the proof see Subsection \ref{sec:3SATNPcomp}
   \end{enumerate}
-
 \end{enumerate}
-\begin{comment}
-$\phi$ = $( x_1 \wedge x_2 ) \vee (\neg x_1 \vee x_3) \wedge \neg x_2$ 
-\\
-\\
-\\\includegraphics[scale = 0.3 , angle = 90]{tree.jpg}\\
-$\phi ' $
-\begin{tabular}{|c|}
-\hline
-$ = y_1 \wedge$ $(y_1$  $\iff$ $( y_2 \wedge \neg x_2))$   \\
-$(y_2$  $\iff$ $( y_3 \vee  y_4))$   \\
-$(y_3$  $\iff$ $( x_1 \wedge  x_2))$   \\
-$(y_4$  $\iff$ $( \neg x_1 \vee  x_3))$   \\
-\hline
-\end{tabular}\\
-\\
-\\%$p \iff q \equiv (p \wedge q) \vee ( \neg p \wedge \neg q)$
-\\ 
-truth table for biconditional statment\quad$ p \iff q $\\
-\begin{tabular}{|c|c|c|}
-\hline
-p & q&  \\
-\hline
-T & T & T \\
-T&F&F\\
-F&T&F\\
-F&F&T\\
-\hline
-\end{tabular}\\
-\\
-\\
-\begin{tabular}{ |c|c|c|c|c| }
-\hline
-p&
-\multicolumn{2}{|c|} {q}\\
-\hline
-$y_1$&$y_2$&$\neg y_2$&Clause 1\\
-\hline		
-1&1&0&	FALSE*\\
-1&1&1&	TRUE\\
-1&0&0& 	FALSE*\\
-1&0&1&	FALSE*\\
-0&1&0&	TRUE\\
-0&1&1&        FALSE*\\
-0&0&0&	TRUE\\
-0&0&1&	TRUE\\
-\hline
-\end{tabular}\\
-$\neg C_1 = (y_1 \wedge y_2 \wedge x_2) \vee (y_1 \wedge \neg y_2 \wedge x_2) \vee (y_1 \wedge \neg y_2 \wedge \neg x_2) \vee (\neg y_1 \wedge y_2 \wedge \neg x_2)$\\
-\\
-\begin{tabular}{|c|}
-\hline
-Demorgans Law\\
-$\neg( p \wedge q ) = \neg p \vee \neg q$\\
-$\neg( p \vee q ) = \neg p \wedge \neg q$\\
-\hline
-\end{tabular}\\
-\\
-$CNF\quad C_1 = (\neg y_1 \vee \neg y_2 \vee \neg x_2) \wedge ( \neg y_1 \vee y_2 \vee \neg x_2) \wedge (\neg y_1 \vee y_2 \vee x_2) \wedge ( y_1 \vee \neg y_2 \vee x_2) $\\
-\\
-\\
-\begin{tabular}{ |c|c|c|c|c| }
-\hline
-$y_2$&$y_3$&$y_4$&Clause 2\\
-\hline		
-1&1&0&	TRUE\\
-1&1&1&	TRUE\\
-1&0&0&	FALSE*\\
-1&0&1&	TRUE\\
-0&1&0&	FALSE*\\
-0&1&1&	FALSE*\\
-0&0&0&	TRUE\\
-0&0&1&	FALSE*\\
-\hline
-\end{tabular}\\
-\end{comment}
+
+
+
+\section{NP-completeness of 3-SAT}
+\label{sec:3SATNPcomp}
+
+We assume:
+\begin{thm}[{{\cite[Theorem 1]{Cook1971NP}}}]\label{thm:SATNPcomplete}
+  The SAT problem (see Definition \ref{def:SATproblem}) is NP-complete (see Definition \ref{def:NPcomplete}).
+\end{thm}
+
+The main task of this section is to give a good understanding of the NP-completeness of 3-SAT:
+\begin{thm}[{{\cite[Theorem 2]{Cook1971NP}}}]\label{thm:SATNPcomplete}
+  The 3-SAT problem (see Definition \ref{def:3SATproblem}) is NP-complete.
+\end{thm}
+
+
+
 
 
 \section{3SAT to 1-in-3-SAT}
