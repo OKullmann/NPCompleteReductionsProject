@@ -115,15 +115,23 @@
 \label{sec:BackgroundSAT}
 
 \begin{defi}\label{def:CNF}
-  A \textbf{CNF} (``CNF formula'') is XXX
+  A \textbf{CNF} (``CNF formula'') is XXX a conjunctive normal form formula is a conjunction of clauses, whereby each clause is a disjunction of literals.
 \end{defi}
 
 \begin{defi}\label{def:CLS}
-  A \textbf{clause-set} is XXX
+  A \textbf{clause-set} is XXX a clause-set is a set with clause as it's elements.
 \end{defi}
 
 \begin{examp}\label{exp:CLS}
-  XXX examples for CNF and clause-sets
+  XXX examples for CNF and clause-sets\\
+F is CNF formula.\\ 
+$F = \bigwedge_{j=1}^{n} c_j = c_1 \wedge c_2 \wedge \dots \wedge c_n$,
+$c \in C$,  C is a clause-set.\\
+$c_i = \bigvee_{j=1}^{s} x_{ij} =  (x_{i1} \vee x_{i2} \vee \dots \vee x_{is})$\\
+$x_{ij}$ is an literal or negation of an literal.
+$x \in X$. X is a set of literals.\\
+
+there are various versions of CNF formulas, such as SAT, 3SAT, 1-in-3SAT, 2SAT.
 \end{examp}
 
 
@@ -131,7 +139,7 @@
 \label{sec:basicscomplexitytheory}
 
 \begin{defi}\label{def:complexityclass}
-  A \textbf{complexity class} is XXX
+  A \textbf{complexity class} is XXX A complexity class is a set of problems that requires the similar amount of resources to solve, such as size of input required and time requied to solve.
 \end{defi}
 
 \begin{defi}\label{def:inNP}
