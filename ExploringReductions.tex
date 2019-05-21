@@ -70,6 +70,15 @@
 \label{sec:todostodos}
 
 \begin{enumerate}
+\item As given by OK:
+  \begin{enumerate}
+  \item Complete Definition \ref{def:CNF}.
+  \item Complete Definition \ref{def:CLS}.
+  \item Complete Example \ref{exp:CLS}.
+  \item Provide a formal definition of ``complexity class'' (Definition \ref{def:complexityclass}).
+  \item Write Definition \ref{def:inNP} (NP).
+  \item Provide Definition \ref{def:NPcomplete}.
+  \end{enumerate}
 \item Consolidate Git-repositories.
 \item Next meeting: looking at the C++ code.
   \begin{enumerate}
@@ -139,16 +148,19 @@ there are various versions of CNF formulas, such as SAT, 3SAT, 1-in-3SAT, 2SAT.
 \section{Complexity theory}
 \label{sec:basicscomplexitytheory}
 
+Intuitively, a ``complexity class'' is a set of problems that requires a ``similar amount of resources'' to solve, such as time required. Formally however one needs to be as liberal as possible, since this notion is very basic, while ``resources'' etc.\ is very hard to define:
 \begin{defi}\label{def:complexityclass}
-  A \textbf{complexity class} XXX A complexity class is a set of problems that requires the similar amount of resources to solve, such as size of input required and time requied to solve.
+  XXX
 \end{defi}
 
+Intuitively, a complexity class is said to be ``in NP'' if it is a decision problem, where for the ``yes-answer'' a short witness can be provided, which can be verified in polynomial time. Formally the complexity class ``NP'' is defined as follows:
 \begin{defi}\label{def:inNP}
-  A complexity class $\mathcal{C}$ is \textbf{in NP} if XXX it is a set that contains elements with property that they are a decision problem that is solvable in polynomial time by a non-deterministic turing machine, the problems can be verified in polynomial time by a determinstic turing machine. 
+  XXX
 \end{defi}
 
+Intuitively, a complexity class is called ``NP-complete'', if it is in NP (see Definition \ref{def:inNP}), and is at least as hard as the hardest NP problems (known as being NP-hard) --- this can be formalised as the property that every \emph{other} problem in NP can be reduced to it:
 \begin{defi}\label{def:NPcomplete}
-  A complexity class $\mathcal{C}$ is \textbf{NP-complete}, if $\mathcal{C}$ is in NP (see Definition \ref{def:inNP}), and XXX is atleast as hard as the hardest NP problems (known as being NP-hard) and can be reduced into any other NP - complete problem in polynomial time.
+  XXX
 \end{defi}
 
 
